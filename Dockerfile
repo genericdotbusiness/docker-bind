@@ -17,6 +17,7 @@ RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes \
  && rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /sbin/entrypoint.sh
+COPY genericbind/ns3/named.conf.local /named.conf.local
 
 RUN chmod 755 /sbin/entrypoint.sh
 

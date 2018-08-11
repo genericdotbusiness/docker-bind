@@ -1,4 +1,3 @@
-all: build
-
-build:
-	@docker build --tag=sameersbn/bind .
+all:
+	docker-compose build
+	docker-compose up

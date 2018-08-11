@@ -1,20 +1,13 @@
-FROM ubuntu:bionic-20180526 AS add-apt-repositories
+FROM debian:latest
 
-RUN apt-get update
-
-FROM ubuntu:bionic-20180526
-
-LABEL maintainer="sameer@damagehead.com"
+LABEL maintainer="denis@generic.business"
 
 ENV BIND_USER=bind \
-    BIND_VERSION=9.11.3 \
     DATA_DIR=/data
 
-RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes \
- && apt-get update \
+RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-      bind9=1:${BIND_VERSION}* bind9-host=1:${BIND_VERSION}* dnsutils \
- && rm -rf /var/lib/apt/lists/*
+      bind9 bind9-host dnsutils
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 COPY genericbind/ns3/named.conf.local /named.conf.local

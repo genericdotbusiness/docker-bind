@@ -1,0 +1,3 @@
+[submodule "genericbind"]
+	path = genericbind
+	url = git@github.com:genericdotbusiness/genericbind.git

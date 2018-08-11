@@ -2,6 +2,7 @@ version: '2'
 
 services:
   bind:
+    container_name: generic-ns
     restart: always
     build:
       context: .

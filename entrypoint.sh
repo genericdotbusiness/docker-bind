@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-ROOT_PASSWORD=${ROOT_PASSWORD:-password}
-
 BIND_DATA_DIR=${DATA_DIR}/bind
 
 create_bind_data_dir() {
@@ -24,10 +22,6 @@ create_bind_data_dir() {
   fi
   rm -rf /var/lib/bind
   ln -sf ${BIND_DATA_DIR}/lib /var/lib/bind
-}
-
-set_root_passwd() {
-  echo "root:$ROOT_PASSWORD" | chpasswd
 }
 
 create_pid_dir() {

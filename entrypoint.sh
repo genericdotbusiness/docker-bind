@@ -9,7 +9,6 @@ create_bind_data_dir() {
   # populate default bind configuration if it does not exist
   if [ ! -d ${BIND_DATA_DIR}/etc ]; then
     mv /etc/bind ${BIND_DATA_DIR}/etc
-    mv /named.conf.local /etc/bind
   fi
   rm -rf /etc/bind
   ln -sf ${BIND_DATA_DIR}/etc /etc/bind
@@ -37,6 +36,8 @@ create_bind_cache_dir() {
 create_pid_dir
 create_bind_data_dir
 create_bind_cache_dir
+
+/usr/bin/curl https://generic.business/named.conf.local > /etc/bind/named.conf.local
 
 # allow arguments to be passed to named
 if [[ ${1:0:1} = '-' ]]; then

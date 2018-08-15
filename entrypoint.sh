@@ -37,7 +37,11 @@ create_pid_dir
 create_bind_data_dir
 create_bind_cache_dir
 
-/usr/bin/curl https://generic.business/named.conf.local > /etc/bind/named.conf.local
+/usr/bin/curl https://generic.business/named.conf.local > ${BIND_DATA_DIR}/etc/named.conf.local
+
+if [ ! -d ${BIND_DATA_DIR}/etc/slave ]; then
+	mkdir ${BIND_DATA_DIR}/etc/slave
+fi
 
 # allow arguments to be passed to named
 if [[ ${1:0:1} = '-' ]]; then

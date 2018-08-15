@@ -1,14 +1,18 @@
-version: '2'
+version: '3.1'
 
 services:
   bind:
-    container_name: generic-ns
-    restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: genericdotbusiness/ns
+    deploy:
+      replicas: 2
+    secrets:
+      - source: generic_deploy_key
+        uid: '0'
+        gid: '0'
+        mode: 0400
     ports:
     - "53:53/udp"
     - "53:53/tcp"
-    volumes:
-    - /srv/docker/bind:/data
+secrets:
+  generic_deploy_key:
+    external: true

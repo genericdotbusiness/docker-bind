@@ -38,6 +38,7 @@ create_bind_data_dir
 create_bind_cache_dir
 
 /usr/bin/curl https://generic.business/named.conf.local > ${BIND_DATA_DIR}/etc/named.conf.local
+/usr/bin/curl https://generic.business/named.conf.options > ${BIND_DATA_DIR}/etc/named.conf.options
 
 if [ ! -d ${BIND_DATA_DIR}/etc/slave ]; then
 	mkdir ${BIND_DATA_DIR}/etc/slave
